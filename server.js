@@ -72,6 +72,8 @@ app.get('/index.html', (req,res)=>
     // retrieves data from the http server '/' and then sends the http server to work with index.html
 );
 
+app.listen(80, () => (console.log ('Server is starting on Port, ',80)));
+
 
 app.listen(443, () => (console.log ('Server is starting on Port, ',443)));
 
