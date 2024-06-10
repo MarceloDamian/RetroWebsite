@@ -11,7 +11,7 @@ const auth = {
     auth:
     {   
         api_key: process.env.API_URL,
-        domain: "sandboxb984f2dd1d8042d9bbfb2963f0629400.mailgun.org"
+        domain: process.env.DOMAIN_
     },
 };
 // auth is needed to set up mailgun. api key and domain are given by mailgun.. 
