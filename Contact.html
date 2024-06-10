@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <style>
+      body
+      {
+        /* background-image: url('/img.jpg');  */
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        background-size: cover;
+      }
+      h1
+      {
+
+
+        text-align: center;
+
+        
+      }
+      nav 
+      {
+        border: 1px solid  rgba(248, 243, 243, 0.385);
+        background-color: rgba(21, 20, 20, 0.63);
+      }
+      p
+      {
+        font-size: 70%;
+        margin: 5%;
+
+      }
+      a.a{
+        padding-inline: 10%;
+      }
+      tr
+      {
+        padding-right: 10cm;
+      }
+      td
+      {
+
+        padding-left: 25vw;
+        padding-bottom: .5cm;
+        
+      }
+      input
+      {
+        padding-right: 4cm;
+      }
+      .move
+      {
+        padding-left: 4cm;
+      }
+      
+  </style>
+  <!-- <img src='/img.jpg'/> -->
+
+      <body background="earthwow.jpg">      
+        <h1 style="color:antiquewhite" > Contact </h1>
+            <nav class="navbar">
+                <a class = "a" href="/index.html">Index</a>
+                <a class = "a" href="/News.html">Blog/News</a>
+                <a class = "a" href="/Contact.html">Contact</a>
+            </nav>
+        <h2 style="color:antiquewhite">
+          <br>
+            <p><a href="https://www.linkedin.com/in/erick-c-/">Linkedin</a><img src="/linkedin.png" style="float:Right"  width="7%"></p>
+            <br>
+            <p><a href="https://github.com/MarceloDamian">Github</a><img src="/github.png" style="float:Right" width="7%"></p>
+
+            <br>
+            <p style="font-size: 20px;">erickcabrera1909@gmail.com<img src="/gmail.png" style="float:Right"  width="7%"></p>
+        </h2>
+
+        <div className="emailbox">
+            <table>
+                  <form>
+                    <tr><td><h3 style="color: antiquewhite;">Name:</h3> <input type = "text" id="subject" placeholder="Name" ></td></tr>
+                    <tr><td><h3 style="color: antiquewhite;">Email:</h3><input type = "email" id="email" placeholder="Email"></td></tr>
+                    <tr><td><h3 style="color: antiquewhite;">Message:</h3><textarea name = "text" id="text" cols="45" rows="20"> </textarea></td></tr>
+                    <tr><td><input class="move" type = "submit" value="Submit"></td></tr>
+                  </form>
+          </table>
+        </div>
+          <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+          <script>
+              $('form').on('submit', (e) => {
+                  // intakes form as a query or "object" .
+      
+                  e.preventDefault();
+                  // Normally used and it says that its default action should not be taken
+                  // as it normally would be. 
+      
+                  // e.preventDefault() helps as it stops the form from 
+                  // being submitted and gets breaken up below 
+                  
+                  const email = $('#email').val().trim();
+                  const subject= $('#subject').val().trim();
+                  const text = $('#text').val().trim();
+                  
+                  // The '#email' or '#subject' or '#text' is depending on type in the input.
+                  // .val is the value and .trim trims the whitespaces before and after the string. 
+      
+      
+                  const data = 
+                  {
+                      email,
+                      subject,
+                      text
+                  };
+                  // the object that is going to pass thru is const data or (email/subject/text)
+      
+                  $.post('/email',data,()=>
+                  {
+                      console.log('server recieved our data');
+                  }
+                  );
+                  // submits this data to the email server using post, 
+                  //formatted as a jquery as it is in html.
+              }
+              );;
+          </script>
+
+  </body>
+</html>
