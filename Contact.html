@@ -20,11 +20,7 @@
       }
       h1
       {
-
-
         text-align: center;
-
-        
       }
       nav 
       {
@@ -47,19 +43,20 @@
       td
       {
 
-        padding-left: 25vw;
+        padding-left: 8vw;
         padding-bottom: .5cm;
         
       }
       input
       {
-        padding-right: 4cm;
+        width:9cm;
       }
-      .move
+      /* .move
       {
-        padding-left: 4cm;
+        /* width:30vw; 
       }
-      
+      */
+
   </style>
   <!-- <img src='/img.jpg'/> -->
 
@@ -84,18 +81,22 @@
             <table>
                   <form>
                     <tr><td><h3 style="color: antiquewhite;">Name:</h3> <input type = "text" id="subject" placeholder="Name" ></td></tr>
-                    <tr><td><h3 style="color: antiquewhite;">Email:</h3><input type = "email" id="email" placeholder="Email"></td></tr>
-                    <tr><td><h3 style="color: antiquewhite;">Message:</h3><textarea name = "text" id="text" cols="45" rows="20"> </textarea></td></tr>
-                    <tr><td><input class="move" type = "submit" value="Submit"></td></tr>
+                    <tr><td><h3 style="color: antiquewhite;">Email:</h3><input type = "email" id="email" placeholder="Email" ></td></tr>
+                    <tr><td><h3 style="color: antiquewhite;">Message:</h3><textarea placeholder=" Your Message" name = "text" id="text" cols="40" rows="12"></textarea></td></tr>
+                    <tr><td><input class="move" type = "submit" value="Submit" onclick="alertwindwow()"></td></tr>
                   </form>
           </table>
         </div>
           <!-- jQuery first, then Popper.js, then Bootstrap JS -->
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+          
+
           <script>
+              
+              let FormCompleted = false;
+
               $('form').on('submit', (e) => {
                   // intakes form as a query or "object" .
-      
                   e.preventDefault();
                   // Normally used and it says that its default action should not be taken
                   // as it normally would be. 
@@ -122,12 +123,27 @@
                   $.post('/email',data,()=>
                   {
                       console.log('server recieved our data');
+                      FormCompleted = true;
                   }
                   );
                   // submits this data to the email server using post, 
                   //formatted as a jquery as it is in html.
               }
               );;
+
+              function alertwindwow()
+              {
+                if (FormCompleted==true)
+                { 
+                  alert ("Thank you! Someone will be with you promptly.");
+                  location.reload();
+                }
+                else
+                {
+                  alert ("Please fill in all prompts to send.");
+                }
+              };
+
           </script>
 
   </body>

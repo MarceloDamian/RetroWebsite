@@ -36,6 +36,25 @@ app.post('/email', (req,res)=>
     const {email, subject ,text} = req.body; 
     // ^^^^^ stores in the format of an object and json, and breaks and labels them up as email, subject, text 
     console.log('Data: ', req.body);
+
+    if (email=='')
+    {
+        console.log("Email is missing");
+    }
+    if (subject=='')
+    {
+        console.log("Subject is missing");
+    }
+    if (text=='')
+    {
+        console.log("Message is missing");
+    }   
+    if (email!='' && subject!='' && text!='')
+    {
+        console.log ("Thank you! Someone will be with you promptly.");
+    }
+
+
     sendEmails(email,subject,text, (err,data)=>
     {
         if (err)
